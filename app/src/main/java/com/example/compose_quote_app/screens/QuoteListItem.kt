@@ -28,12 +28,12 @@ import androidx.compose.ui.unit.dp
 import com.example.compose_quote_app.models.Quote
 
 @Composable
-fun QuoteListItem(quote: Quote, onClick: () -> Unit) {
+fun QuoteListItem(quote: Quote, onClick: (Quote) -> Unit) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(4.dp),
         modifier = Modifier
-            .clickable(onClick = onClick)
+            .clickable{ onClick(quote) }
             .padding(8.dp)
     ) {
         Row(modifier = Modifier.padding(16.dp)) {

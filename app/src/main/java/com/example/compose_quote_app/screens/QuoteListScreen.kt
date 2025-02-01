@@ -16,7 +16,7 @@ import com.example.compose_quote_app.R
 import com.example.compose_quote_app.models.Quote
 
 @Composable
-fun QuoteListScreen(data: Array<Quote>, modifier: Modifier, onClick: () -> Unit) {
+fun QuoteListScreen(data: Array<Quote>, modifier: Modifier, onClick: (Quote) -> Unit) {
     Column(
         modifier = modifier
     ) {
@@ -31,7 +31,7 @@ fun QuoteListScreen(data: Array<Quote>, modifier: Modifier, onClick: () -> Unit)
         )
         LazyColumn {
             items(data.size) {
-                QuoteListItem(data[it]) {onClick()}
+                QuoteListItem(data[it], onClick)
             }
         }
     }

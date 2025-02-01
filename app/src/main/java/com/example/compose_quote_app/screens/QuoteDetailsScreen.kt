@@ -1,5 +1,7 @@
 package com.example.compose_quote_app.screens
 
+import android.util.Log
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -21,11 +23,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import com.example.compose_quote_app.DataManager
+import com.example.compose_quote_app.R
 import com.example.compose_quote_app.models.Quote
 
 @Composable
 fun QuoteDetailsScreen(quote: Quote) {
+    BackHandler {
+        DataManager.switchPages()
+    }
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -60,13 +69,13 @@ fun QuoteDetailsScreen(quote: Quote) {
 
                 Text(
                     text = quote.text,
-                    //fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+                    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
                     text = quote.author,
-                    //fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+                    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
                     style = MaterialTheme.typography.titleSmall
                 )
             }
